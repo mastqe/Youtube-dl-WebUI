@@ -55,13 +55,6 @@
 					<div class="col-md-10">
 						<input class="form-control" id="url" name="urls" placeholder="Link(s) separated by a comma" type="text">
 					</div>
-					<div class="col-md-2">
-						<div class="checkbox">
-							<label>
-								<input type="checkbox" name="audio"> Audio Only
-							</label>
-						</div>
-					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Download</button>
 			</form>

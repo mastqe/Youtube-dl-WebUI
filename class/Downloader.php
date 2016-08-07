@@ -185,20 +185,17 @@ class Downloader
 	private function do_download()
 	{
 		$cmd = "youtube-dl";
-		$cmd .= " -o ".$this->download_path."/";
-		$cmd .= escapeshellarg("%(title)s-%(uploader)s.%(ext)s");
+		$cmd .= "-i -o ".$this->download_path."/";
+		$cmd .= escapeshellarg("%(title)s.%(ext)s");
 
-		if($this->audio_only)
-		{
-			$cmd .= " -x ";
-		}
+		$cmd .= " -x -f 140";
 
 		foreach($this->urls as $url)
 		{
 			$cmd .= " ".escapeshellarg($url);
 		}
 
-		$cmd .= " --restrict-filenames"; // --restrict-filenames is for specials chars
+		//$cmd .= " --restrict-filenames"; // --restrict-filenames is for specials chars
 		$cmd .= " > /dev/null & echo $!";
 
 		shell_exec($cmd);
