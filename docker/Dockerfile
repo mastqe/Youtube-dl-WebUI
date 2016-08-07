@@ -1,17 +1,14 @@
 FROM debian:wheezy
 
 RUN apt-get update && apt-get install -y --no-install-recommends\
-    git python libav-tools apache2 php5 curl ca-certificates
-RUN rm -rf /var/lib/apt/lists/*
+    git python libav-tools apache2 php5 curl ca-certificates\
+ && rm -rf /var/lib/apt/lists/*
 
 #Install youtube-dl
-RUN curl https://yt-dl.org/downloads/2015.03.09/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl
+RUN curl -L https://yt-dl.org/downloads/2016.08.01/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl
 
 WORKDIR /
-RUN mkdir /www
-
-WORKDIR /www
-RUN git clone https://github.com/p1rox/youtube-dl-webui.git youtube-dl
+RUN git clone https://github.com/mastqe/youtube-dl-webui.git /www/youtube-dl
 
 WORKDIR /www/youtube-dl
 RUN rm -rf .git README.md img .gitignore docker
