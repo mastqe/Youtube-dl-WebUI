@@ -185,10 +185,10 @@ class Downloader
 	private function do_download()
 	{
 		$cmd = "youtube-dl";
-		$cmd .= "-i -o ".$this->download_path."/";
+		$cmd .= " -o ".$this->download_path."/";
 		$cmd .= escapeshellarg("%(title)s.%(ext)s");
 
-		$cmd .= " -x -f 140";
+		$cmd .= " -i -x -f 140 ";
 
 		foreach($this->urls as $url)
 		{
